@@ -17,8 +17,8 @@ import { generateFlows } from './flows-pure';
 
 const user = userFactory();
 
-function getCheckoutUrl( dependencies ) {
-	return '/checkout/' + dependencies.siteSlug;
+function getCheckoutUrl( dependencies, destination ) {
+	return '/checkout/' + dependencies.siteSlug + '?redirect_to=' + destination;
 }
 
 function dependenciesContainCartItem( dependencies ) {
@@ -26,10 +26,6 @@ function dependenciesContainCartItem( dependencies ) {
 }
 
 function getSiteDestination( dependencies ) {
-	if ( dependenciesContainCartItem( dependencies ) ) {
-		return getCheckoutUrl( dependencies );
-	}
-
 	let protocol = 'https';
 
 	/**
@@ -44,12 +40,8 @@ function getSiteDestination( dependencies ) {
 	return protocol + '://' + dependencies.siteSlug;
 }
 
-function getPostsDestination( dependencies ) {
-	if ( dependenciesContainCartItem( dependencies ) ) {
-		return getCheckoutUrl( dependencies );
-	}
-
-	return '/posts/' + dependencies.siteSlug;
+function getChecklistDestination( dependencies ) {
+	return '/checklist/' + dependencies.siteSlug;
 }
 
 function getRedirectDestination( dependencies ) {
@@ -142,7 +134,11 @@ function filterFlowName( flowName ) {
 	return flowName;
 }
 
-function filterDestination( destination ) {
+function filterDestination( destination, dependencies ) {
+	if ( dependenciesContainCartItem( dependencies ) ) {
+		return getCheckoutUrl( dependencies, destination );
+	}
+
 	return destination;
 }
 
