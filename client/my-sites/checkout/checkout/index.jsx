@@ -349,6 +349,7 @@ export class Checkout extends React.Component {
 		let renewalItem;
 		const {
 			cart,
+			redirectTo,
 			selectedSite,
 			selectedSiteSlug,
 			transaction: {
@@ -449,12 +450,15 @@ export class Checkout extends React.Component {
 			return `/checkout/${ selectedSiteSlug }/add-quickstart-session/${ receiptId }`;
 		}
 
+		if ( redirectTo ) {
+			return redirectTo;
+		}
+
 		if ( this.props.isEligibleForCheckoutToChecklist && receipt ) {
 			if ( this.props.redirectToPageBuilder ) {
 				return getEditHomeUrl( selectedSiteSlug );
 			}
 			const destination = abtest( 'improvedOnboarding' ) === 'main' ? 'checklist' : 'view';
-
 			return `/${ destination }/${ selectedSiteSlug }`;
 		}
 
