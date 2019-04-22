@@ -15,7 +15,8 @@ import Gridicon from 'gridicons';
 /**
  * Internal dependencies
  */
-import { startMappingAuthors, startUpload } from 'lib/importer/actions';
+import { startUpload } from 'lib/importer/actions';
+import { startMappingAuthors } from 'state/imports/actions';
 import { appStates } from 'state/imports/constants';
 import DropZone from 'components/drop-zone';
 import ProgressBar from 'components/progress-bar';
@@ -117,9 +118,14 @@ class UploadingPane extends React.PureComponent {
 		startUpload( this.props.importerStatus, file );
 	};
 
+	startMappingAuthors = () => {
+		const importerId = get( this.props, 'importerStatus.importerId' );
+		importerId && this.props.startMappingAuthors( importerId );
+	};
+
 	render() {
 		const { importerStatus, site, isEnabled } = this.props;
-		const { importerState, importerId } = importerStatus;
+		const { importerState } = importerStatus;
 		const isReadyForImport = this.isReadyForImport();
 
 		return (
@@ -155,7 +161,7 @@ class UploadingPane extends React.PureComponent {
 					<ImporterActionButton
 						primary
 						disabled={ importerState !== appStates.UPLOAD_SUCCESS }
-						onClick={ () => startMappingAuthors( importerId ) }
+						onClick={ this.startMappingAuthors }
 					>
 						{ this.props.translate( 'Continue' ) }
 					</ImporterActionButton>
@@ -166,9 +172,12 @@ class UploadingPane extends React.PureComponent {
 }
 
 export default flow(
-	connect( state => ( {
-		filename: get( state, 'imports.uploads.filename' ),
-		percentComplete: get( state, 'imports.uploads.percentComplete' ),
-	} ) ),
+	connect(
+		state => ( {
+			filename: get( state, 'imports.uploads.filename' ),
+			percentComplete: get( state, 'imports.uploads.percentComplete' ),
+		} ),
+		{ startMappingAuthors }
+	),
 	localize
 )( UploadingPane );
