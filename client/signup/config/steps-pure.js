@@ -581,6 +581,14 @@ export function generateSteps( {
 			delayApiRequestUntilComplete: true,
 		},
 
+		'site-title-with-preview': {
+			stepName: 'site-title-with-preview',
+			providesDependencies: [ 'siteTitle' ],
+			props: {
+				showSiteMockups: true,
+			},
+		},
+
 		launch: {
 			stepName: 'launch',
 			apiRequestFunction: launchSiteApi,

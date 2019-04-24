@@ -190,4 +190,5 @@ export default {
 	'site-information-address-with-preview': SiteInformationComponent,
 	'site-information-phone-with-preview': SiteInformationComponent,
 	'domains-with-preview': DomainsStepComponent,
+	'site-title-with-preview': SiteTitleComponent,
 };
