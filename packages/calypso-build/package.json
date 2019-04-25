@@ -58,6 +58,6 @@
 		"webpack": "4.29.6",
 		"webpack-cli": "3.3.0",
 		"webpack-filter-warnings-plugin": "1.2.1",
-		"webpack-rtl-plugin": "1.8.0"
+		"webpack-rtl-plugin": "2.0.0"
 	}
 }
