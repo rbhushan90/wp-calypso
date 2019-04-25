@@ -97,9 +97,6 @@ const SiteTopicComponent = props => (
 const SiteTypeComponent = props => (
 	<AsyncLoad require="signup/steps/site-type" placeholder={ null } { ...props } />
 );
-const SiteInformationComponent = props => (
-	<AsyncLoad require="signup/steps/site-information" placeholder={ null } { ...props } />
-);
 const SurveyStepComponent = props => (
 	<AsyncLoad require="signup/steps/survey" placeholder={ null } { ...props } />
 );
@@ -156,15 +153,11 @@ export default {
 	'rewind-were-backing': RewindWereBacking,
 	'rewind-add-creds': RewindAddCreds,
 	'rewind-form-creds': RewindFormCreds,
-	'site-information': SiteInformationComponent,
-	'site-information-without-domains': SiteInformationComponent,
-	'site-information-title': SiteInformationComponent,
-	'site-information-address': SiteInformationComponent,
-	'site-information-phone': SiteInformationComponent,
 	'site-or-domain': SiteOrDomainComponent,
 	'site-picker': SitePicker,
 	'site-style': SiteStyleComponent,
 	'site-title': SiteTitleComponent,
+	'site-title-without-domains': SiteTitleComponent,
 	'site-topic': SiteTopicComponent,
 	'site-type': SiteTypeComponent,
 	survey: SurveyStepComponent,
@@ -185,10 +178,6 @@ export default {
 	// Steps with preview
 	'site-style-with-preview': SiteStyleComponent,
 	'site-topic-with-preview': SiteTopicComponent,
-	'site-information-with-preview': SiteInformationComponent,
-	'site-information-title-with-preview': SiteInformationComponent,
-	'site-information-address-with-preview': SiteInformationComponent,
-	'site-information-phone-with-preview': SiteInformationComponent,
 	'domains-with-preview': DomainsStepComponent,
 	'site-title-with-preview': SiteTitleComponent,
 };
