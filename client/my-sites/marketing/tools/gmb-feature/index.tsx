@@ -36,6 +36,7 @@ const MarketingToolGMBFeature: FunctionComponent< MarketingToolGMBFeatureProps >
 			description={ translate(
 				'Get ahead of your competition. Be there when customers search businesses like yours on Google Search and Maps by connecting to Google My Business.'
 			) }
+			imagePath="/calypso/images/illustrations/business.svg"
 		>
 			{ hasGoogleMyBusinessAvailable ? (
 				<Button onClick={ handleConnectToGoogleMyBusinessClick }>
