@@ -14,6 +14,7 @@ import ActionCard from 'components/action-card';
 import Button from 'components/button';
 import { getSelectedSiteSlug } from 'state/ui/selectors';
 import MarketingToolFeature from './feature';
+import MarketingToolGMBFeature from './gmb-feature';
 import { marketingToolsSharingButtons, marketingToolsTraffic } from 'my-sites/marketing/paths';
 /**
  * Style dependencies
@@ -71,6 +72,7 @@ export const MarketingTools: FunctionComponent< MarketingToolsProps > = ( {
 						{ translate( 'Find your expert' ) }
 					</Button>
 				</MarketingToolFeature>
+				<MarketingToolGMBFeature />
 			</div>
 		</Fragment>
 	);
