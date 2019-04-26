@@ -182,4 +182,13 @@ export default {
 		defaultVariation: 'control',
 		allowExistingUsers: true,
 	},
+	conciergePricing: {
+		datestamp: '20190426',
+		variations: {
+			controlOldPrice: 50,
+			variantNewPrice: 50,
+		},
+		defaultVariation: 'controlOldPrice',
+		allowExistingUsers: true,
+	},
 };
