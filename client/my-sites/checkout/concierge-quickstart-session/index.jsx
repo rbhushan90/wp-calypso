@@ -366,7 +366,11 @@ export class ConciergeQuickstartSession extends React.Component {
 
 		trackUpsellButtonClick( 'accept' );
 
-		addItem( cartItems.conciergeSessionItem() );
+		if ( 'variantNewPrice' === abtest( 'conciergePricing' ) ) {
+			addItem( cartItems.conciergeSessionAltItem() );
+		} else {
+			addItem( cartItems.conciergeSessionItem() );
+		}
 
 		page( `/checkout/${ siteSlug }` );
 	};
