@@ -349,7 +349,6 @@ export class Checkout extends React.Component {
 		let renewalItem;
 		const {
 			cart,
-			redirectTo,
 			selectedSite,
 			selectedSiteSlug,
 			transaction: {
@@ -448,10 +447,6 @@ export class Checkout extends React.Component {
 			// A user just purchased one of the qualifying plans
 			// Show them the concierge session upsell page
 			return `/checkout/${ selectedSiteSlug }/add-quickstart-session/${ receiptId }`;
-		}
-
-		if ( redirectTo ) {
-			return redirectTo;
 		}
 
 		if ( this.props.isEligibleForCheckoutToChecklist && receipt ) {
